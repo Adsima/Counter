@@ -5,15 +5,9 @@ public class Counter {
     private Double hotWater;
     private Double electricity;
 
-    public Counter(Double coldWater, Double hotWater, Double electricity) {
-        this.coldWater = coldWater;
-        this.hotWater = hotWater;
-        this.electricity = electricity;
+    public static CounterBuilder builder() {
+        return new CounterBuilder();
     }
-
-//    public static CounterBuilder builder() {
-//        return new CounterBuilder();
-//    }
 
     public static class CounterBuilder {
         private Double coldWater;
@@ -35,8 +29,8 @@ public class Counter {
             return this;
         }
 
-        public Counter build() {
-            return new Counter(coldWater, hotWater, electricity);
+        public Counter counter() {
+            return new Counter();
         }
     }
 }

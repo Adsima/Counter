@@ -12,15 +12,23 @@ import static calculate.util.MessageConstants.KEY_WORD;
 public final class TaskService {
     private Scanner scanner;
     private NotName name;
-
     private Double value;
 
-    public TaskService() throws IOException {
-        this.scanner = new Scanner(System.in);
-        this.name = new NotName();
+    private Task task;
+
+    public static void main(String[] args) throws IOException {
+        new TaskService();
     }
 
-        public void runTask(Task task) throws IOException {
+    public TaskService() throws IOException {
+        this.task = new Task();
+        this.scanner = new Scanner(System.in);
+        this.name = new NotName();
+
+        runTask();
+    }
+
+        public void runTask() throws IOException {
             print(task.getNextMessage());
 
             while (needContinue(value = scanner.nextDouble())) {
@@ -41,7 +49,5 @@ public final class TaskService {
         return !KEY_WORD.equals(inputString);
     }
 
-    public Double getValue() {
-        return value;
-    }
+
 }

@@ -3,12 +3,13 @@ package calculate.model.not_name;
 import calculate.Calculation.ColdWaterCalculation;
 import calculate.Calculation.ElectricityCalculation;
 import calculate.Calculation.HotWaterCalculation;
+import calculate.model.task.Task;
 
 import java.io.IOException;
 
 import static calculate.util.ConsoleUtil.printFormat;
 
-public class NotName {
+public class NotName extends Task {
     private ColdWaterCalculation coldWater;
     private HotWaterCalculation hotWater;
     private ElectricityCalculation electricity;
@@ -24,8 +25,8 @@ public class NotName {
     }
 //     Как будем передавать новые значения?
     private Double totalAmount() throws IOException {
-        return coldWater.calculationPaymentAmount() +
-                hotWater.calculationPaymentAmount() +
-                electricity.calculationPaymentAmount();
+        return coldWater.calculationPaymentAmount(getColdWater()) +
+                hotWater.calculationPaymentAmount(getHotWater()) +
+                electricity.calculationPaymentAmount(getElectricity());
     }
 }

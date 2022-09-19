@@ -13,4 +13,5 @@ public class ElectricityCalculation implements Calculation {
 
         return (newCounterValue - Double.parseDouble(value)) * ELECTRICITY_COEFFICIENT;
     }
+
 }

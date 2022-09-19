@@ -5,7 +5,7 @@ import calculate.model.counter.Counter;
 import static calculate.model.task.TaskState.COLD_WATER_STATE;
 import static calculate.model.task.TaskState.READY_STATE;
 
-public abstract class Task {
+public class Task {
     protected Double coldWater;
     protected Double hotWater;
     protected Double electricity;
@@ -54,6 +54,4 @@ public abstract class Task {
     public void setElectricity(Double electricity) {
         electricity = electricity;
     }
-
-    public abstract Counter getValue();
 }
