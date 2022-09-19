@@ -1,8 +1,8 @@
 package calculate.util;
 
 public final class ConsoleUtil {
-    public static void print(String s) {
-        System.out.println(s);
+    public static void print(String string) {
+        System.out.print(string);
     }
 
     public static void printFormat(String template, Double... value) {

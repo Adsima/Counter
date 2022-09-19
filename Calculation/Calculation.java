@@ -1,5 +1,7 @@
 package calculate.Calculation;
 
+import java.io.IOException;
+
 public interface Calculation {
-    Double calculationPaymentAmount(String oldCounterValue, Double newCounterValue);
+    Double calculationPaymentAmount(Double newCounterValue) throws IOException;
 }

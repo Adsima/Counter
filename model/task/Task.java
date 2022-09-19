@@ -1,12 +1,16 @@
-package calculate.model;
+package calculate.model.task;
 
-import static calculate.model.TaskState.COLD_WATER_STATE;
-import static calculate.model.TaskState.READY_STATE;
+import calculate.model.counter.Counter;
+
+import static calculate.model.task.TaskState.COLD_WATER_STATE;
+import static calculate.model.task.TaskState.READY_STATE;
 
 public abstract class Task {
     protected Double coldWater;
     protected Double hotWater;
-    protected Double Electricity;
+    protected Double electricity;
+
+    protected Counter value;
 
     protected TaskState taskState = COLD_WATER_STATE;
 
@@ -18,8 +22,13 @@ public abstract class Task {
         return READY_STATE == taskState;
     }
 
-    private void rollState() {
+    public void rollState() {
         taskState = taskState.getNextState();
+    }
+    // сохранить значение
+    public void setValueToNextState(Double value) {
+        taskState.setActualValue(this, value);
+        rollState();
     }
 
     public Double getColdWater() {
@@ -27,7 +36,7 @@ public abstract class Task {
     }
 
     public void setColdWater(Double coldWater) {
-        this.coldWater = coldWater;
+        coldWater = coldWater;
     }
 
     public Double getHotWater() {
@@ -35,15 +44,16 @@ public abstract class Task {
     }
 
     public void setHotWater(Double hotWater) {
-        this.hotWater = hotWater;
+        hotWater = hotWater;
     }
 
     public Double getElectricity() {
-        return Electricity;
+        return electricity;
     }
 
     public void setElectricity(Double electricity) {
-        Electricity = electricity;
+        electricity = electricity;
     }
 
+    public abstract Counter getValue();
 }

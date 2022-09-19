@@ -1,4 +1,4 @@
-package calculate.model;
+package calculate.model.task;
 
 import static calculate.util.MessageConstants.*;
 
@@ -13,6 +13,10 @@ public enum TaskState {
         TaskState getNextState() {
             return HOT_WATER_STATE;
         }
+
+        void setActualValue(Task task, Double value) {
+            task.setColdWater(value);
+        }
     },
     HOT_WATER_STATE {
         @Override
@@ -23,6 +27,10 @@ public enum TaskState {
         @Override
         TaskState getNextState() {
             return ELECTRICITY_STATE;
+        }
+
+        void setActualValue(Task task, Double value) {
+            task.setHotWater(value);
         }
     },
     ELECTRICITY_STATE {
@@ -35,6 +43,10 @@ public enum TaskState {
         TaskState getNextState() {
             return READY_STATE;
         }
+
+        void setActualValue(Task task, Double value) {
+            task.setElectricity(value);
+        }
     },
     READY_STATE {
         @Override
@@ -46,7 +58,13 @@ public enum TaskState {
         TaskState getNextState() {
             return COLD_WATER_STATE;
         }
+
+        @Override
+        void setActualValue(Task task, Double value) {
+        }
     };
     abstract String getMessage();
     abstract TaskState getNextState();
+    abstract void setActualValue(Task task, Double value);
+
 }

@@ -1,4 +1,4 @@
-package calculate.service;
+package calculate.model.service;
 
 public final class StoreService {
 

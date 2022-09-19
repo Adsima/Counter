@@ -9,21 +9,18 @@ public final class CounterUtil {
     public static final Double HOT_WATER_COEFFICIENT = 206.16;
     public static final Double COLD_WATER_COEFFICIENT = 59.93;
     public static final Double ELECTRICITY_COEFFICIENT = 2.58;
+    // взять показания из текст. файла
+    public static String getPreviousCounterValue(String link) throws IOException {
+        String string = null;
 
-    public static String getPreviousCounterValue(String string) throws IOException {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(string))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(link))) {
             String str = bufferedReader.readLine();
             if (str != null) {
-                return str;
+                string = str;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return string;
     }
-
-    public static void printPaymentCounters(Double amount) {
-        System.out.println(amount);
-    }
-
 }
