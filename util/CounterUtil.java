@@ -9,13 +9,13 @@ public final class CounterUtil {
     public static final Double HOT_WATER_COEFFICIENT = 206.16;
     public static final Double COLD_WATER_COEFFICIENT = 59.93;
     public static final Double ELECTRICITY_COEFFICIENT = 2.58;
-    // взять показания из текст. файла
-    public static String getPreviousCounterValue(String link) throws IOException {
+
+    public static String getPreviousCounterValue(String link) {
         String string = null;
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(link))) {
             String str = bufferedReader.readLine();
-            if (str != null) {
+            if (str == null) {
                 string = str;
             }
         } catch (IOException e) {

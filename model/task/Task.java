@@ -1,16 +1,12 @@
 package calculate.model.task;
 
-import calculate.model.counter.Counter;
-
 import static calculate.model.task.TaskState.COLD_WATER_STATE;
 import static calculate.model.task.TaskState.READY_STATE;
 
-public class Task {
+public abstract class Task {
     protected Double coldWater;
     protected Double hotWater;
     protected Double electricity;
-
-    protected Counter value;
 
     protected TaskState taskState = COLD_WATER_STATE;
 
@@ -54,4 +50,6 @@ public class Task {
     public void setElectricity(Double electricity) {
         electricity = electricity;
     }
+
+    public abstract Double calculation();
 }

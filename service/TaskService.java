@@ -1,9 +1,8 @@
-package calculate.model.service;
+package calculate.service;
 
-import calculate.model.not_name.NotName;
+import calculate.model.info.Payment;
 import calculate.model.task.Task;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 import static calculate.util.ConsoleUtil.print;
@@ -11,24 +10,15 @@ import static calculate.util.MessageConstants.KEY_WORD;
 
 public final class TaskService {
     private Scanner scanner;
-    private NotName name;
+    private Payment name;
     private Double value;
 
-    private Task task;
-
-    public static void main(String[] args) throws IOException {
-        new TaskService();
-    }
-
-    public TaskService() throws IOException {
-        this.task = new Task();
+    public TaskService() {
         this.scanner = new Scanner(System.in);
-        this.name = new NotName();
-
-        runTask();
+        this.name = new Payment();
     }
 
-        public void runTask() throws IOException {
+        public void runTask(Task task) {
             print(task.getNextMessage());
 
             while (needContinue(value = scanner.nextDouble())) {
@@ -37,7 +27,7 @@ public final class TaskService {
                 //Здесь должна быть логика перезаписи файла:
 
                 if(task.isReady()) {
-                    name.paymentInformation();
+                    name.paymentAmount();
                     scanner.close();
                 } else {
                     print(task.getNextMessage());
@@ -48,6 +38,7 @@ public final class TaskService {
     public boolean needContinue(Double inputString) {
         return !KEY_WORD.equals(inputString);
     }
+
 
 
 }
