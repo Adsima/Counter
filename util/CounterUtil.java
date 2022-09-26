@@ -2,6 +2,7 @@ package calculate.util;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 
@@ -23,4 +24,13 @@ public final class CounterUtil {
         }
         return string;
     }
+
+    public static void overwriting(String link, Double value) {
+        try(FileWriter fileWriter = new FileWriter(link)) {
+            fileWriter.write(String.valueOf(value));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

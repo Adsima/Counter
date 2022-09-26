@@ -24,7 +24,7 @@ public final class TaskService {
             while (needContinue(value = scanner.nextDouble())) {
 
                 task.setValueToNextState(value);
-                //Здесь должна быть логика перезаписи файла:
+                task.overwritingValueToNextState(value);
 
                 if(task.isReady()) {
                     name.paymentAmount();

@@ -21,10 +21,14 @@ public abstract class Task {
     public void rollState() {
         taskState = taskState.getNextState();
     }
-    // сохранить значение
+
     public void setValueToNextState(Double value) {
         taskState.setActualValue(this, value);
         rollState();
+    }
+
+    public void overwritingValueToNextState(Double value) {
+        taskState.overwritingActualValue(value);
     }
 
     public Double getColdWater() {

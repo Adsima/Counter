@@ -1,6 +1,8 @@
 package calculate.model.task;
 
+import static calculate.util.CounterUtil.overwriting;
 import static calculate.util.MessageConstants.*;
+import static calculate.util.link.FileLink.*;
 
 public enum TaskState {
     COLD_WATER_STATE {
@@ -17,6 +19,11 @@ public enum TaskState {
         void setActualValue(Task task, Double value) {
             task.setColdWater(value);
         }
+
+        @Override
+        void overwritingActualValue(Double value) {
+            overwriting(COLD_WATER_LINK, value);
+        }
     },
     HOT_WATER_STATE {
         @Override
@@ -31,6 +38,11 @@ public enum TaskState {
 
         void setActualValue(Task task, Double value) {
             task.setHotWater(value);
+        }
+
+        @Override
+        void overwritingActualValue(Double value) {
+            overwriting(HOT_WATER_LINK, value);
         }
     },
     ELECTRICITY_STATE {
@@ -47,6 +59,11 @@ public enum TaskState {
         void setActualValue(Task task, Double value) {
             task.setElectricity(value);
         }
+
+        @Override
+        void overwritingActualValue(Double value) {
+            overwriting(ELECTRICITY_LINK, value);
+        }
     },
     READY_STATE {
         @Override
@@ -62,9 +79,13 @@ public enum TaskState {
         @Override
         void setActualValue(Task task, Double value) {
         }
+
+        @Override
+        void overwritingActualValue(Double value) {
+        }
     };
     abstract String getMessage();
     abstract TaskState getNextState();
     abstract void setActualValue(Task task, Double value);
-
+    abstract void overwritingActualValue(Double value);
 }
