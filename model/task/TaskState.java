@@ -11,20 +11,20 @@ public enum TaskState {
             return VALUE_COLD_WATER_COUNTER;
         }
 
-        @Override
-        TaskState getNextState() {
-            return HOT_WATER_STATE;
-        }
-
-        void setActualValue(Task task, Double value) {
-            task.setColdWater(value);
-
+        void setActualValue(Double value) {
+            CounterTask.setColdWater(value);
         }
 
         @Override
         void overwritingActualValue(Double value) {
             overwriting(COLD_WATER_LINK, value);
         }
+
+        @Override
+        TaskState getNextState() {
+            return HOT_WATER_STATE;
+        }
+
     },
     HOT_WATER_STATE {
         @Override
@@ -32,19 +32,22 @@ public enum TaskState {
             return VALUE_HOT_WATER_COUNTER;
         }
 
-        @Override
-        TaskState getNextState() {
-            return ELECTRICITY_STATE;
-        }
 
-        void setActualValue(Task task, Double value) {
-            task.setHotWater(value);
+        void setActualValue(Double value) {
+            CounterTask.setHotWater(value);
         }
 
         @Override
         void overwritingActualValue(Double value) {
             overwriting(HOT_WATER_LINK, value);
         }
+
+        @Override
+        TaskState getNextState() {
+            return ELECTRICITY_STATE;
+        }
+
+
     },
     ELECTRICITY_STATE {
         @Override
@@ -52,18 +55,19 @@ public enum TaskState {
             return VALUE_ELECTRICITY_COUNTER;
         }
 
-        @Override
-        TaskState getNextState() {
-            return READY_STATE;
-        }
 
-        void setActualValue(Task task, Double value) {
-            task.setElectricity(value);
+        void setActualValue(Double value) {
+            CounterTask.setElectricity(value);
         }
 
         @Override
         void overwritingActualValue(Double value) {
             overwriting(ELECTRICITY_LINK, value);
+        }
+
+        @Override
+        TaskState getNextState() {
+            return READY_STATE;
         }
     },
     READY_STATE {
@@ -73,20 +77,22 @@ public enum TaskState {
         }
 
         @Override
-        TaskState getNextState() {
-            return COLD_WATER_STATE;
-        }
-
-        @Override
-        void setActualValue(Task task, Double value) {
+        void setActualValue(Double value) {
         }
 
         @Override
         void overwritingActualValue(Double value) {
         }
+
+        @Override
+        TaskState getNextState() {
+            return COLD_WATER_STATE;
+        }
+
+
     };
     abstract String getMessage();
     abstract TaskState getNextState();
-    abstract void setActualValue(Task task, Double value);
+    abstract void setActualValue(Double value);
     abstract void overwritingActualValue(Double value);
 }

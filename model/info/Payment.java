@@ -21,7 +21,7 @@ public class Payment  {
     public void paymentAmount() {
         printFormat(PAYMENT_TOTAL, totalAmount());
     }
-
+    //Поздно выполняет то, что необходимо
     private Double totalAmount() {
         return coldWater.calculation() +
                 hotWater.calculation() +

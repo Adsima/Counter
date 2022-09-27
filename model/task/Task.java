@@ -1,16 +1,10 @@
 package calculate.model.task;
 
-import calculate.model.task.calculation.CounterTask;
-
 import static calculate.model.task.TaskState.COLD_WATER_STATE;
 import static calculate.model.task.TaskState.READY_STATE;
 
-public abstract class Task {
-    protected Double coldWater;
-    protected Double hotWater;
-    protected Double electricity;
+public class Task {
 
-    private CounterTask counterTask = new CounterTask();
     protected TaskState taskState = COLD_WATER_STATE;
 
     public String getNextMessage() {
@@ -26,37 +20,11 @@ public abstract class Task {
     }
 
     public void setValueToNextState(Double value) {
-        taskState.setActualValue(this, value);
-        rollState();
+        taskState.setActualValue(value);
     }
 
     public void overwritingValueToNextState(Double value) {
         taskState.overwritingActualValue(value);
+        rollState();
     }
-
-    public Double getColdWater() {
-        return coldWater;
-    }
-
-    public void setColdWater(Double coldWater) {
-        coldWater = coldWater;
-    }
-
-    public Double getHotWater() {
-        return hotWater;
-    }
-
-    public void setHotWater(Double hotWater) {
-        hotWater = hotWater;
-    }
-
-    public Double getElectricity() {
-        return electricity;
-    }
-
-    public void setElectricity(Double electricity) {
-        electricity = electricity;
-    }
-
-    public abstract Double calculation();
 }

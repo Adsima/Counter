@@ -13,12 +13,15 @@ public final class TaskService {
     private Payment name;
     private Double value;
 
+    private Task task;
+
     public TaskService() {
+        this.task = new Task();
         this.scanner = new Scanner(System.in);
         this.name = new Payment();
     }
 
-        public void runTask(Task task) {
+        public void runTask() {
             print(task.getNextMessage());
 
             while (needContinue(value = scanner.nextDouble())) {
@@ -29,6 +32,8 @@ public final class TaskService {
                 if(task.isReady()) {
                     name.paymentAmount();
                     scanner.close();
+
+                    return;
                 } else {
                     print(task.getNextMessage());
                 }

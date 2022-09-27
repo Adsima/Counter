@@ -16,7 +16,7 @@ public final class CounterUtil {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(link))) {
             String str = bufferedReader.readLine();
-            if (str == null) {
+            if (str != null) {
                 string = str;
             }
         } catch (IOException e) {
