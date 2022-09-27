@@ -18,6 +18,7 @@ public enum TaskState {
 
         void setActualValue(Task task, Double value) {
             task.setColdWater(value);
+
         }
 
         @Override

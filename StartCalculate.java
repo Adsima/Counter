@@ -1,7 +1,6 @@
 package calculate;
 
 import calculate.service.TaskService;
-import calculate.strategy.Strategy;
 
 import java.io.IOException;
 
@@ -11,7 +10,6 @@ import static calculate.util.MessageConstants.GREETINGS_STRING;
 public class StartCalculate {
 
     TaskService taskService;
-    Strategy strategy;
     StartCalculate() {
         taskService = new TaskService();
     }
@@ -24,7 +22,7 @@ public class StartCalculate {
     private void start() {
         print(GREETINGS_STRING);
 
-        taskService.runTask(strategy.strategy());
+        taskService.runTask();
 
     }
 }

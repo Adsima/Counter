@@ -1,5 +1,7 @@
 package calculate.model.task;
 
+import calculate.model.task.calculation.CounterTask;
+
 import static calculate.model.task.TaskState.COLD_WATER_STATE;
 import static calculate.model.task.TaskState.READY_STATE;
 
@@ -8,6 +10,7 @@ public abstract class Task {
     protected Double hotWater;
     protected Double electricity;
 
+    private CounterTask counterTask = new CounterTask();
     protected TaskState taskState = COLD_WATER_STATE;
 
     public String getNextMessage() {
