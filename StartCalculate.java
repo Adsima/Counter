@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class StartCalculate {
 
-    TaskService taskService;
+    private TaskService taskService;
     StartCalculate() {
         taskService = new TaskService();
     }

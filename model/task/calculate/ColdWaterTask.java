@@ -1,4 +1,4 @@
-package calculate.model.task.calculation;
+package calculate.model.task.calculate;
 
 import calculate.model.task.CounterTask;
 
@@ -8,7 +8,7 @@ import static calculate.util.link.FileLink.COLD_WATER_LINK;
 
 public class ColdWaterTask extends CounterTask {
 
-    public Double calculation() {
+    public static Double calculation() {
         String value = getPreviousCounterValue(COLD_WATER_LINK);
 
         return (getColdWater() - Double.parseDouble(value)) * COLD_WATER_COEFFICIENT;

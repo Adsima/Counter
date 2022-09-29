@@ -1,6 +1,6 @@
 package calculate.service;
 
-import calculate.model.info.Payment;
+import calculate.model.info.CounterInfo;
 import calculate.model.task.Task;
 
 import java.util.Scanner;
@@ -10,7 +10,7 @@ import static calculate.util.MessageConstants.KEY_WORD;
 
 public final class TaskService {
     private Scanner scanner;
-    private Payment name;
+    private CounterInfo info;
     private Double value;
 
     private Task task;
@@ -18,7 +18,7 @@ public final class TaskService {
     public TaskService() {
         this.task = new Task();
         this.scanner = new Scanner(System.in);
-        this.name = new Payment();
+        this.info = new CounterInfo();
     }
 
         public void runTask() {
@@ -27,10 +27,11 @@ public final class TaskService {
             while (needContinue(value = scanner.nextDouble())) {
 
                 task.setValueToNextState(value);
-                task.overwritingValueToNextState(value);
+//                task.overwritingValueToNextState(value);
 
                 if(task.isReady()) {
-                    name.paymentAmount();
+
+                    info.payAmount();
                     scanner.close();
 
                     return;

@@ -28,4 +28,6 @@ public class CounterTask {
     public static void setElectricity(Double electricity) {
         CounterTask.electricity = electricity;
     }
+
+
 }

@@ -21,10 +21,15 @@ public class Task {
 
     public void setValueToNextState(Double value) {
         taskState.setActualValue(value);
+        calculations();
     }
 
     public void overwritingValueToNextState(Double value) {
         taskState.overwritingActualValue(value);
         rollState();
+    }
+
+    public void calculations() {
+        taskState.calculationSpecificState();
     }
 }

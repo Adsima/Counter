@@ -7,11 +7,12 @@ public final class MessageConstants {
     public static final String VALUE_COLD_WATER_COUNTER = "Введите показание счетчика за холодную воду: ";
     public static final String VALUE_HOT_WATER_COUNTER = "Введите показание счетчика за горячую воду: ";
     // Pay
-    public static final String PAYMENT_TOTAL = "Общая сумма платежа: %s";
+    public static final String PAYMENT_TOTAL = "Общая сумма платежа: %.2f";
 
-    public static final String PAYMENT_FOR_HOT_WATER = "Оплата за горячую воду: ";
-    public static final String PAYMENT_FOR_COLD_WATER = "Оплата за холодную воду: ";
-    public static final String PAYMENT_FOR_ELECTRICITY = "Оплата за электроэнергию: ";
+    public static final String PAYMENT_FOR_HOT_WATER = "Оплата за горячую воду: %.2f";
+    public static final String PAYMENT_FOR_COLD_WATER = "Оплата за холодную воду: %.2f";
+    public static final String PAYMENT_FOR_ELECTRICITY = "Оплата за электроэнергию: %.2f";
+    public static final String PAYMENT_INFO = "";
     // Exception
     public static final String UNKNOWN_STATE_MESSAGE = "Неизвестное состояние";
 
