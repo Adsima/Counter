@@ -2,21 +2,23 @@ package calculate;
 
 import calculate.service.TaskService;
 
-import java.io.IOException;
-
 public class StartCalculate {
 
-    private TaskService taskService;
+    private TaskService service;
     StartCalculate() {
-        taskService = new TaskService();
+        service = new TaskService();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new StartCalculate()
                 .start();
     }
 
     private void start() {
-        taskService.runTask();
+        while (service.needContinue(service.getLastInput())) {
+            service.runTask();
+        }
+
+//        service.finish();
     }
 }

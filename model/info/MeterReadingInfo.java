@@ -1,18 +1,18 @@
 package calculate.model.info;
 
 import static calculate.util.ConsoleUtil.printFormat;
-import static calculate.util.MessageConstants.PAYMENT_TOTAL;
+import static calculate.util.MessageConstants.*;
 
-public class CounterInfo {
+public class MeterReadingInfo {
     private static Double coldWaterValue;
     private static Double hotWaterValue;
     private static Double electricityValue;
 
-    public void payAmount() {
-        printFormat(PAYMENT_TOTAL, totalAmount());
+    public void printPayAmount() {
+        printFormat(PAYMENT_TOTAL, calculateTotalAmount());
     }
 
-    private Double totalAmount() {
+    private Double calculateTotalAmount() {
         return getColdWaterValue() +
                 getHotWaterValue() +
                 getElectricityValue();
@@ -23,7 +23,7 @@ public class CounterInfo {
     }
 
     public static void setColdWaterValue(Double coldWaterValue) {
-        CounterInfo.coldWaterValue = coldWaterValue;
+        MeterReadingInfo.coldWaterValue = coldWaterValue;
     }
 
     public Double getHotWaterValue() {
@@ -31,7 +31,7 @@ public class CounterInfo {
     }
 
     public static void setHotWaterValue(Double hotWaterValue) {
-        CounterInfo.hotWaterValue = hotWaterValue;
+        MeterReadingInfo.hotWaterValue = hotWaterValue;
     }
 
     public Double getElectricityValue() {
@@ -39,6 +39,6 @@ public class CounterInfo {
     }
 
     public static void setElectricityValue(Double electricityValue) {
-        CounterInfo.electricityValue = electricityValue;
+        MeterReadingInfo.electricityValue = electricityValue;
     }
 }

@@ -1,12 +1,12 @@
 package calculate.model.task.calculate;
 
-import calculate.model.task.CounterTask;
+import calculate.model.task.MeterReadingsTask;
 
-import static calculate.util.CounterUtil.ELECTRICITY_COEFFICIENT;
-import static calculate.util.CounterUtil.getPreviousCounterValue;
+import static calculate.util.MeterReadingsUtil.ELECTRICITY_COEFFICIENT;
+import static calculate.util.MeterReadingsUtil.getPreviousCounterValue;
 import static calculate.util.link.FileLink.ELECTRICITY_LINK;
 
-public class ElectricityTask extends CounterTask {
+public class ElectricityTask extends MeterReadingsTask {
     public static Double calculation() {
         String value = getPreviousCounterValue(ELECTRICITY_LINK);
 

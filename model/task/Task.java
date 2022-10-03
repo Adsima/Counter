@@ -24,8 +24,12 @@ public class Task {
         calculations();
     }
 
+    public boolean isValidValue(String value) {
+        return taskState.getValidator(value).validate(value);
+    }
+
     public void overwritingValueToNextState(Double value) {
-        taskState.overwritingActualValue(value);
+//        taskState.overwritingActualValue(value);
         rollState();
     }
 

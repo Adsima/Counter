@@ -1,6 +1,6 @@
 package calculate.model.task;
 
-public class CounterTask {
+public class MeterReadingsTask {
     private static Double coldWater;
     private static Double hotWater;
     private static Double electricity;
@@ -10,7 +10,7 @@ public class CounterTask {
     }
 
     public static void setColdWater(Double coldWater) {
-        CounterTask.coldWater = coldWater;
+        MeterReadingsTask.coldWater = coldWater;
     }
 
     public static Double getHotWater() {
@@ -18,7 +18,7 @@ public class CounterTask {
     }
 
     public static void setHotWater(Double hotWater) {
-        CounterTask.hotWater = hotWater;
+        MeterReadingsTask.hotWater = hotWater;
     }
 
     public static Double getElectricity() {
@@ -26,8 +26,6 @@ public class CounterTask {
     }
 
     public static void setElectricity(Double electricity) {
-        CounterTask.electricity = electricity;
+        MeterReadingsTask.electricity = electricity;
     }
-
-
 }

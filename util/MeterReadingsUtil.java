@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-public final class CounterUtil {
+public final class MeterReadingsUtil {
     public static final Double HOT_WATER_COEFFICIENT = 206.16;
     public static final Double COLD_WATER_COEFFICIENT = 59.93;
     public static final Double ELECTRICITY_COEFFICIENT = 2.58;

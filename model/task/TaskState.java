@@ -1,13 +1,17 @@
 package calculate.model.task;
 
-import calculate.model.info.CounterInfo;
+import calculate.model.info.MeterReadingInfo;
 import calculate.model.task.calculate.ColdWaterTask;
 import calculate.model.task.calculate.ElectricityTask;
 import calculate.model.task.calculate.HotWaterTask;
+import calculate.validator.ColdWaterValidator;
+import calculate.validator.ElectricityValidator;
+import calculate.validator.HotWaterValidator;
+import calculate.validator.Validator;
 
 import static calculate.util.ConsoleUtil.printFormat;
-import static calculate.util.CounterUtil.overwriting;
 import static calculate.util.MessageConstants.*;
+import static calculate.util.MeterReadingsUtil.overwriting;
 import static calculate.util.link.FileLink.*;
 
 public enum TaskState {
@@ -18,13 +22,18 @@ public enum TaskState {
         }
 
         void setActualValue(Double value) {
-            CounterTask.setColdWater(value);
+            MeterReadingsTask.setColdWater(value);
         }
 
         @Override
         void calculationSpecificState() {
             printFormat(PAYMENT_FOR_COLD_WATER, ColdWaterTask.calculation());
-            CounterInfo.setColdWaterValue(ColdWaterTask.calculation());
+            MeterReadingInfo.setColdWaterValue(ColdWaterTask.calculation());
+        }
+
+        @Override
+        Validator getValidator(String value) {
+            return new ColdWaterValidator();
         }
 
         @Override
@@ -44,15 +53,19 @@ public enum TaskState {
             return VALUE_HOT_WATER_COUNTER;
         }
 
-
         void setActualValue(Double value) {
-            CounterTask.setHotWater(value);
+            MeterReadingsTask.setHotWater(value);
         }
 
         @Override
         void calculationSpecificState() {
             printFormat(PAYMENT_FOR_HOT_WATER, HotWaterTask.calculation());
-            CounterInfo.setHotWaterValue(HotWaterTask.calculation());
+            MeterReadingInfo.setHotWaterValue(HotWaterTask.calculation());
+        }
+
+        @Override
+        Validator getValidator(String value) {
+            return new HotWaterValidator();
         }
 
         @Override
@@ -73,15 +86,19 @@ public enum TaskState {
             return VALUE_ELECTRICITY_COUNTER;
         }
 
-
         void setActualValue(Double value) {
-            CounterTask.setElectricity(value);
+            MeterReadingsTask.setElectricity(value);
         }
 
         @Override
         void calculationSpecificState() {
             printFormat(PAYMENT_FOR_ELECTRICITY, ElectricityTask.calculation());
-            CounterInfo.setElectricityValue(ElectricityTask.calculation());
+            MeterReadingInfo.setElectricityValue(ElectricityTask.calculation());
+        }
+
+        @Override
+        Validator getValidator(String value) {
+            return new ElectricityValidator();
         }
 
         @Override
@@ -106,7 +123,11 @@ public enum TaskState {
 
         @Override
         void calculationSpecificState() {
+        }
 
+        @Override
+        Validator getValidator(String value) {
+            return null;
         }
 
         @Override
@@ -125,5 +146,6 @@ public enum TaskState {
     abstract void setActualValue(Double value);
     abstract void calculationSpecificState();
     abstract void overwritingActualValue(Double value);
+    abstract Validator getValidator(String value);
 
 }

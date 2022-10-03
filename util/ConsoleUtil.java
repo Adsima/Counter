@@ -5,7 +5,7 @@ public final class ConsoleUtil {
         System.out.print(string);
     }
 
-    public static void printFormat(String template, Double... value) {
+    public static void printFormat(String template, Object... value) {
         System.out.println(String.format(template, value));
     }
 }
