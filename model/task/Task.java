@@ -29,7 +29,7 @@ public class Task {
     }
 
     public void overwritingValueToNextState(Double value) {
-//        taskState.overwritingActualValue(value);
+        taskState.overwritingActualValue(value);
         rollState();
     }
 
